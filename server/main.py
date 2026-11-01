@@ -1,5 +1,12 @@
 import os
+import sys
 import datetime
+
+# Ensure current server directory is on sys.path for cloud deployment runners (Render, Railway, etc.)
+SERVER_DIR = os.path.dirname(os.path.abspath(__file__))
+if SERVER_DIR not in sys.path:
+    sys.path.insert(0, SERVER_DIR)
+
 from typing import Dict, Any, List, Optional
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
